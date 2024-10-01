@@ -116,6 +116,10 @@ h1 {
     background-color: var(--copy-button);
     margin-right: 5px;
 }
+/* Add this class for success state */
+.copyBtn.success {
+    background-color: #2ecc71; /* Green success color */
+}
 
 #taskList .copyBtn:hover {
     background-color: var(--copy-hover);

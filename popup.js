@@ -28,19 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Copy button
         const copyBtn = document.createElement('button');
-        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
         copyBtn.textContent = 'Copy';
-
         copyBtn.classList.add('copyBtn');
         copyBtn.addEventListener('click', function () {
-            navigator.clipboard.writeText(taskText);
+            navigator.clipboard.writeText(taskText).then(() => {
+                copyBtn.textContent = 'Copied!'; // Change text to "Copied!"
+                copyBtn.style.backgroundColor = '#2ecc71'; // Optional: Change button color on success
+
+                // Revert back to 'Copy' after 2 seconds
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.style.backgroundColor = ''; // Reset color to default
+                }, 2000);
+            });
         });
 
         // Delete button
         const deleteBtn = document.createElement('button');
-        deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
         deleteBtn.textContent = 'Delete';
-
         deleteBtn.classList.add('deleteBtn');
         deleteBtn.addEventListener('click', function () {
             li.remove();
@@ -50,14 +55,16 @@ document.addEventListener('DOMContentLoaded', function () {
         li.appendChild(taskSpan);
         li.appendChild(copyBtn);
         li.appendChild(deleteBtn);
-        taskList.appendChild(li);
+        
+        // Add the new task at the top of the list
+        taskList.insertBefore(li, taskList.firstChild);
     }
 
     // Save the task to Chrome's storage
     function saveTask(taskText) {
         chrome.storage.local.get('tasks', function (data) {
             const tasks = data.tasks || [];
-            tasks.push(taskText);
+            tasks.unshift(taskText); // Add new task at the start of the array
             chrome.storage.local.set({ tasks });
         });
     }

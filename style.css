@@ -99,6 +99,23 @@ h1 {
     background-color: #3d566e;
 }
 
+/* Task Content */
+.taskContent {
+    flex-grow: 1; /* Allow task text to take available space */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+}
+
+.task-text {
+    overflow: hidden; /* Hide overflow */
+    /* Removed text-overflow and white-space properties to allow wrapping */
+    flex-grow: 1; /* Allow text to fill available space */
+    word-wrap: break-word; /* Allow long words to break onto the next line */
+    /* Optional styling */
+    padding-right: 10px; /* Add padding for better visual spacing */
+}
+
 /* Buttons within Tasks */
 #taskList button {
     padding: 6px 10px;
@@ -109,15 +126,15 @@ h1 {
     box-shadow: 0 3px 5px rgba(0,0,0,0.2);
     transition: background-color 0.3s, transform 0.2s;
     font-size: 0.9em;
+    margin-left: 5px; /* Add spacing between buttons */
 }
 
 /* Copy Button */
 #taskList .copyBtn {
     background-color: var(--copy-button);
-    margin-right: 5px;
 }
-/* Add this class for success state */
-.copyBtn.success {
+
+#taskList .copyBtn.success {
     background-color: #2ecc71; /* Green success color */
 }
 
@@ -140,6 +157,32 @@ h1 {
 
 #taskList .deleteBtn:active {
     transform: translateY(1px);
+}
+
+/* Edit Button */
+#taskList .editBtn {
+    background-color: #f1c40f; /* Yellow for Edit */
+}
+
+#taskList .editBtn:hover {
+    background-color: #f39c12; /* Darker yellow on hover */
+}
+
+#taskList .editBtn:active {
+    transform: translateY(1px);
+}
+
+/* Completed Task Styling */
+#taskList li.completed {
+    background-color: #27ae60; /* Green background for completed tasks */
+    text-decoration: line-through;
+    color: #ffffff;
+    border-color: #2ecc71; /* Light green border */
+    opacity: 0.8;
+}
+
+#taskList li.completed:hover {
+    background-color: #2ecc71;
 }
 
 /* Scrollbar Styling */

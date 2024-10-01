@@ -23,23 +23,31 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to add task to the DOM
     function addTaskToDOM(taskText) {
         const li = document.createElement('li');
-        li.textContent = taskText;
+        const taskSpan = document.createElement('span');
+        taskSpan.textContent = taskText;
 
         // Copy button
         const copyBtn = document.createElement('button');
+        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
         copyBtn.textContent = 'Copy';
+
+        copyBtn.classList.add('copyBtn');
         copyBtn.addEventListener('click', function () {
             navigator.clipboard.writeText(taskText);
         });
 
         // Delete button
         const deleteBtn = document.createElement('button');
+        deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
         deleteBtn.textContent = 'Delete';
+
+        deleteBtn.classList.add('deleteBtn');
         deleteBtn.addEventListener('click', function () {
             li.remove();
             deleteTask(taskText);
         });
 
+        li.appendChild(taskSpan);
         li.appendChild(copyBtn);
         li.appendChild(deleteBtn);
         taskList.appendChild(li);

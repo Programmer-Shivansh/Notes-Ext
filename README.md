@@ -1,16 +1,19 @@
 ```mermaid
 graph TD;
-    A[User Interface] -->|Interacts with| B[Frontend Application];
-    B -->|Sends requests| C[API Server];
-    C -->|Handles requests| D[Database];
-    D -->|Stores tasks| E[Task Data];
-    E -->|Retrieves tasks| C;
-    C -->|Returns responses| B;
-    B -->|Updates UI| A;
-    subgraph Third-Party Services
-        F[Authentication Service]
-        G[Notification Service]
-    end
-    C -->|Authenticates| F;
-    C -->|Sends notifications| G;
+    A[User Interface] -->|Interacts with| B[Task Input];
+    A -->|Displays| C[Task List];
+    B -->|Adds Task| D[Add Task Functionality];
+    D -->|Saves Task| E[Chrome Storage];
+    C -->|Displays Tasks| F[Task Items];
+    F -->|Triggers| G[Copy Button];
+    F -->|Triggers| H[Edit Button];
+    F -->|Triggers| I[Delete Button];
+    G -->|Copies Task Text| J[Clipboard];
+    H -->|Opens Edit Modal| K[Edit Functionality];
+    I -->|Deletes Task| L[Delete Functionality];
+    E -->|Loads Tasks| M[Load Tasks Functionality];
+    M -->|Updates UI| C;
+    F -->|Marks Completed| N[Task Completion Status];
+    N -->|Updates Storage| E;
+
 ```

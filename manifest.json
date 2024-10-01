@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Main",
+    "version": "1.0",
+    "description": "A simple to-do list extension with options to copy and delete tasks.",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon/icon.png",
+        "48": "icon/icon.png",
+        "128": "icon/icon.png"
+      }
+    },
+    "permissions": ["storage", "clipboardWrite"]
+  }
+  

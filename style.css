@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    width: 250px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#taskInput {
+    display: flex;
+    gap: 5px;
+}
+
+#newTask {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+#addTaskBtn {
+    padding: 5px;
+}
+
+#taskList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#taskList li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+button {
+    margin-left: 5px;
+}
